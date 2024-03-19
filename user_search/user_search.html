@@ -1,0 +1,57 @@
+<!--
+What is this?
+It is a simple search tool that can be integrated in some web application that you are developing, 
+it retrieves data from a list, this list can be of course updated with some SQL code within a Web Framework,
+or other sources.
+
+Example:
+In its default state, the list was developed to work as a mention tool system, therefore users are retrieved from
+an external SQL query (Not integrated in the code).
+Since data is retrieved into a list, accessible from the inspect tools, with a 
+document.getElementById() it is a good idea to just take this example as a good start for 
+a more complex search tool, it is good within locale testing, in a deployement environment perhaps 
+needs some more fixing, though so far it works well.
+The to do list for now is the following:
+1)Numbers are not allowed , not yet done
+2)Special characters are not allowed in the input field, note yet done
+3)Improve the list result.
+4)When user enters *, the full result list will be displayed.
+
+How to use it?
+Just copy the files into your project, and create a call for it; If you just want to give a look at it, just
+copy it in your project, even an empty folders, start the html file, and run in the inspect tools
+open_search()
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./user_search_window.css"/>
+    </head>
+    <body>
+        <div id="app-background">
+            <a id="myaddress" href="https://github.com/Raffabello">https://github.com/Raffabello</a>
+            <div id="app-background-search">
+                <table>
+                    <tr>
+                        <div id="typing-effect">
+                            <span class="typing-effect-point"></span>
+                            <span class="typing-effect-point"></span>
+                            <span class="typing-effect-point"></span>
+                        </div>
+                        <td><img id="img_search" src="./search.png" height="24"/></td>
+                        <td><input id="search_field" type="input" size=15 maxlength="12" placeholder="Enter username"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="search-box-result">
+                <ul id = "current_search_list">
+                    
+                </ul>
+            </div>
+        </div>
+        <script src="./user_search_window.js">
+
+        </script>
+    </body>
+</html>
