@@ -1,0 +1,75 @@
+/*
+Author:Raffabello
+
+What is it?
+I would suggest this code snippet for beginners, that are trying to build a simple website, but that offers an easy translation system, that is user friendly and
+will surely make your website distinguish.
+
+Copy the JS script in your source file, and adapt it for the elements you are planning to translate, when the user hovers with the mouse on the text,
+the text will be pushed down, then will be translated, and returns to its position, in a very smooth way (You can check the example.mov), text is not selectable.
+
+You may realize that this would take a tower of "if" conditionals, because this code can translate only elements that have inside "Hello World", and that have a specific
+ID, I did not extend this code, because I am busy with other projects, but from here we can build a very extended and portable JS code, that can work in a good Web
+Platform, from small to big project, such as gettext for Python.
+
+
+*/
+
+<html>
+    <head>
+        <style>
+            /*Ignore this, not necessary
+            :root
+            {
+                font-family:Tahoma, Arial;
+                font-size:13px;
+            }
+            */
+            #box
+            {
+                border:1px solid black;
+                width:100px;
+                height:20px;
+                text-align:center;
+                user-select:none; /*remove this if you want your text to be selectable*/
+            }
+            /*Sorry for the CSS grammar used in here, just remembering some combinators.*/
+            #box > span
+            {
+                position:relative;
+                top:0px;
+                opacity:1;
+                transition:top .25s ease, opacity .25s ease;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="box" onmouseenter="dynamic_translation()">
+            <span id="box-content">Hello World</span>
+        </div>
+        <script>
+
+            function dynamic_translation()
+            {
+                document.getElementById("box-content").style.top = "15px";
+                document.getElementById("box-content").style.opacity = "0";
+                setTimeout(() => {
+                    if(document.getElementById("box-content").innerHTML == "Hello World")
+                    {
+                        document.getElementById("box-content").innerHTML = "你好世界";
+                        document.getElementById("box-content").style.opacity = "1";
+                    }
+                    else
+                    {
+                        document.getElementById("box-content").innerHTML = "Hello World";                        
+                        document.getElementById("box-content").style.opacity = "1";
+                    }
+                    document.getElementById("box-content").style.top = "0px";
+                }, 250)
+            }
+
+        </script>
+    </body>
+</html>
